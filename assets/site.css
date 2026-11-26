@@ -279,6 +279,42 @@ section {
   color: var(--ivory-muted);
 }
 
+/* Diagram: a wide SVG, and a tall one under 40rem (see the picture element) */
+.diagram {
+  margin: 1.5rem 0 0;
+}
+
+.diagram img {
+  width: 100%;
+  border: 1px solid var(--steel-line);
+  border-radius: 6px;
+}
+
+.diagram figcaption {
+  margin-top: 0.75rem;
+  max-width: 42rem;
+  color: var(--ivory-muted);
+}
+
+.diagram-text {
+  margin-top: 1rem;
+  max-width: 48rem;
+}
+
+.diagram-text summary {
+  cursor: pointer;
+  color: var(--violet-light);
+}
+
+.diagram-text ul {
+  margin: 0.75rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.diagram-text li {
+  margin-bottom: 0.5rem;
+}
+
 /* Laws */
 .laws {
   margin: 1.5rem 0 0;
@@ -355,6 +391,14 @@ section {
 
   .brand img {
     width: 170px;
+  }
+
+  .site-nav ul {
+    column-gap: 0.9rem;
+  }
+
+  .site-nav a {
+    font-size: 0.9rem;
   }
 
   .intro {

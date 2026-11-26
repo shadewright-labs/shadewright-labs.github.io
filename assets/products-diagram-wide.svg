@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 730" width="1200" height="730" role="img" aria-labelledby="t d">
+  <title id="t">How the Shadewright Labs products fit together</title>
+  <desc id="d">The operator reviews Shadewright's pull requests, approves Sablecourt's gated actions and watches Nightloom. Shadewright and Sablecourt each work alone today. Two dashed connections are not complete: a code-fault incident handoff from Shadewright to Sablecourt, whose Sablecourt intake is built and whose Shadewright sender is planned, and a read-only observer feed from Sablecourt to Nightloom, whose Sablecourt side is built and whose Nightloom side is not.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#BDB5A6"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 17px; fill: #EFE8D8; }
+    .name { font-family: "Iowan Old Style", Georgia, serif; font-size: 23px; font-weight: 600; }
+    .muted { fill: #BDB5A6; }
+    .box { fill: #24202F; stroke: #3A3447; stroke-width: 1.5; }
+    .line { fill: none; stroke: #BDB5A6; stroke-width: 1.5; }
+    .dash { stroke-dasharray: 7 6; }
+  </style>
+
+  <rect width="1200" height="730" fill="#0B0810"/>
+
+  <!-- The operator and what they do with each product (solid: exists) -->
+  <rect class="box" x="450" y="10" width="300" height="64" rx="6"/>
+  <text class="name" x="600" y="50" text-anchor="middle">The operator</text>
+  <path class="line" d="M450 42H170V150"/>
+  <text x="182" y="30">reviews each pull request</text>
+  <path class="line" d="M600 74V150"/>
+  <text x="612" y="118">approves gated actions</text>
+  <path class="line" d="M750 42H1030V150"/>
+  <text x="764" y="30">watches sessions and decisions</text>
+
+  <!-- Shadewright -->
+  <rect class="box" x="10" y="150" width="320" height="350" rx="6"/>
+  <rect x="10" y="150" width="320" height="4" fill="#A879FF"/>
+  <text class="name" x="30" y="190">Shadewright</text>
+  <text class="muted" x="30" y="216">Early releases</text>
+  <text x="30" y="248">Finds the fault in a cluster</text>
+  <text x="30" y="270">run with GitOps.</text>
+  <text x="30" y="318">Cluster events in</text>
+  <path class="line" d="M40 328V352" marker-end="url(#arrow)"/>
+  <text x="30" y="374">GitOps pull request for review</text>
+  <path class="line" d="M40 384V408" marker-end="url(#arrow)"/>
+  <text x="30" y="430">Rollout verified after the merge</text>
+
+  <!-- Sablecourt -->
+  <rect class="box" x="440" y="150" width="320" height="350" rx="6"/>
+  <rect x="440" y="150" width="320" height="4" fill="#2DD4BF"/>
+  <text class="name" x="460" y="190">Sablecourt</text>
+  <text class="muted" x="460" y="216">Pre-release</text>
+  <text x="460" y="248">Runs many agents under one</text>
+  <text x="460" y="270">set of rules.</text>
+  <text x="460" y="318">Manifests in</text>
+  <path class="line" d="M470 328V352" marker-end="url(#arrow)"/>
+  <text x="460" y="374">Agents, sandboxes, controllers</text>
+  <path class="line" d="M470 384V404" marker-end="url(#arrow)"/>
+  <rect x="456" y="404" width="288" height="80" rx="4" fill="#0B0810" stroke="#2DD4BF" stroke-width="1.5"/>
+  <text x="472" y="428">Model gate</text>
+  <text x="472" y="451">Data and action gate</text>
+  <text x="472" y="474">Approval queue</text>
+
+  <!-- Nightloom -->
+  <rect class="box" x="870" y="150" width="320" height="350" rx="6"/>
+  <rect x="870" y="150" width="320" height="4" fill="#8B3DFF"/>
+  <text class="name" x="890" y="190">Nightloom</text>
+  <text class="muted" x="890" y="216">Not released</text>
+  <text x="890" y="248">One view of coding sessions</text>
+  <text x="890" y="270">and pending decisions.</text>
+  <text x="890" y="318">Sessions on terminals</text>
+  <text x="890" y="340">and machines</text>
+  <path class="line" d="M900 350V374" marker-end="url(#arrow)"/>
+  <text x="890" y="396">One view, and the decisions</text>
+  <text x="890" y="418">waiting for the operator</text>
+
+  <!-- Connections between products (dashed: not complete) -->
+  <path class="line dash" d="M170 500V550H540V500" marker-end="url(#arrow)"/>
+  <text x="355" y="580" text-anchor="middle">Code-fault incident handoff</text>
+  <text class="muted" x="355" y="603" text-anchor="middle">Sablecourt intake: built</text>
+  <text class="muted" x="355" y="626" text-anchor="middle">Shadewright sender: planned</text>
+
+  <path class="line dash" d="M660 500V550H1030V500" marker-end="url(#arrow)"/>
+  <text x="845" y="580" text-anchor="middle">Read-only observer feed</text>
+  <text class="muted" x="845" y="603" text-anchor="middle">Sablecourt side: built</text>
+  <text class="muted" x="845" y="626" text-anchor="middle">Nightloom side: not built</text>
+
+  <!-- Legend -->
+  <path class="line" d="M10 700H60"/>
+  <text x="72" y="706">exists today</text>
+  <path class="line dash" d="M250 700H310" marker-end="url(#arrow)"/>
+  <text x="322" y="706">connection between products, with what is built</text>
+</svg>

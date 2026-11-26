@@ -11,6 +11,7 @@ The site will be served at https://shadewrightlabs.com once the custom domain is
 | `index.html` | The landing page |
 | `404.html` | The page GitHub Pages serves for a missing path. Its links start at `/` because it is served at any depth. |
 | `assets/site.css` | The only stylesheet |
+| `assets/products-diagram-*.svg` | The diagram of how the products fit together, hand-written SVG: a wide version, and a tall one for narrow screens |
 | `assets/<identity>/` | Logo, glyphs, favicons and the social preview image, copied from the Shadewright Labs brand kit |
 | `robots.txt`, `.nojekyll` | Crawl rules, and a marker that turns off Jekyll processing on Pages |
 | `package.json`, `package-lock.json`, `.htmlvalidate.json` | The pinned HTML validator used by CI. Not published. |
