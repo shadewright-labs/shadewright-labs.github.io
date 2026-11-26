@@ -185,15 +185,18 @@ figure {
   color: inherit;
 }
 
-.product--shadewright {
+.product--shadewright,
+.detail--shadewright {
   --accent: #a879ff;
 }
 
-.product--sablecourt {
+.product--sablecourt,
+.detail--sablecourt {
   --accent: #2dd4bf;
 }
 
-.product--nightloom {
+.product--nightloom,
+.detail--nightloom {
   --accent: #8b3dff;
 }
 
@@ -292,6 +295,39 @@ figure {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ivory);
+}
+
+/* Lore line under a product's name: the archetype, then a short passage from the house's story */
+.lore {
+  margin-top: 22px;
+  padding-left: 16px;
+  border-left: 1px solid var(--accent, var(--line));
+  max-width: 36ch;
+}
+
+.lore-role {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ivory);
+  font: 0.75rem/1.4 var(--serif);
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.lore-role::after {
+  content: "";
+  width: 22px;
+  height: 5px;
+  background: var(--accent, var(--violet));
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+  transform: scaleX(-1);
+}
+
+.lore p + p {
+  margin-top: 8px;
+  color: var(--muted);
+  font: italic 1rem/1.6 var(--serif);
 }
 
 .detail .lead {
