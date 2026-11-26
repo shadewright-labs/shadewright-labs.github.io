@@ -1,0 +1,392 @@
+/* Shadewright Labs organisation site. House palette from the brand system. */
+:root {
+  --obsidian: #0b0810;
+  --steel: #24202f;
+  --steel-line: #3a3447;
+  --ivory: #efe8d8;
+  --ivory-muted: #bdb5a6;
+  --violet: #8735f5;
+  --violet-light: #caa5ff;
+  --nightloom: #8b3dff;
+  --shadewright: #a879ff;
+  --sablecourt: #2dd4bf;
+  --serif: "Iowan Old Style", Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --measure: 68rem;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--obsidian);
+  color: var(--ivory);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--violet-light);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--ivory);
+}
+
+:focus-visible {
+  outline: 2px solid var(--violet-light);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
+}
+
+h3 {
+  font-size: 1.35rem;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--steel);
+  color: var(--ivory);
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Header */
+.site-header {
+  border-bottom: 1px solid var(--steel-line);
+}
+
+.site-header .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.brand img {
+  width: 200px;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  color: var(--ivory);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.site-nav a:hover {
+  color: var(--violet-light);
+  text-decoration: underline;
+}
+
+/* Intro */
+.intro {
+  padding: 3.5rem 0 2.5rem;
+}
+
+.tagline {
+  font-family: var(--serif);
+  color: var(--violet-light);
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.lead {
+  font-size: 1.2rem;
+  max-width: 42rem;
+}
+
+.intro p:last-child {
+  max-width: 42rem;
+  color: var(--ivory-muted);
+}
+
+/* Sections */
+section {
+  padding: 2.5rem 0;
+}
+
+.section-note {
+  color: var(--ivory-muted);
+  max-width: 42rem;
+}
+
+/* Products */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  background: var(--steel);
+  border: 1px solid var(--steel-line);
+  border-top: 3px solid var(--accent);
+  border-radius: 6px;
+  padding: 1.5rem;
+}
+
+.product--shadewright {
+  --accent: var(--shadewright);
+}
+
+.product--sablecourt {
+  --accent: var(--sablecourt);
+}
+
+.product--nightloom {
+  --accent: var(--nightloom);
+}
+
+.product-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Night plate behind every glyph, so the Nightloom icon's own dark square matches the other two. */
+.product-head img {
+  width: 56px;
+  height: 56px;
+  flex: none;
+  background: #08060e;
+  border-radius: 10px;
+}
+
+.product-head h3 {
+  margin: 0;
+}
+
+.hook {
+  margin: 0.15rem 0 0;
+  font-size: 0.9rem;
+  color: var(--ivory-muted);
+}
+
+.status {
+  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: 1rem;
+  padding: 0.15rem 0.6rem;
+  border: 1px solid var(--ivory-muted);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: var(--ivory);
+}
+
+.product ul {
+  margin: 0 0 1.25rem;
+  padding-left: 1.2rem;
+}
+
+.product li {
+  margin-bottom: 0.4rem;
+}
+
+.product-links {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.95rem;
+}
+
+.product .product-links {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.muted {
+  color: var(--ivory-muted);
+}
+
+/* Laws */
+.laws {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: law;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.laws li {
+  counter-increment: law;
+  display: grid;
+  grid-template-columns: 2.25rem 1fr;
+  gap: 0 0.75rem;
+  padding: 1rem 1.25rem;
+  background: var(--steel);
+  border: 1px solid var(--steel-line);
+  border-radius: 6px;
+}
+
+.laws li::before {
+  content: counter(law);
+  grid-row: span 2;
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  line-height: 1.2;
+  color: var(--violet-light);
+}
+
+.laws strong {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.laws p {
+  margin: 0.2rem 0 0;
+  color: var(--ivory-muted);
+}
+
+/* Footer */
+.site-footer {
+  margin-top: 2rem;
+  border-top: 1px solid var(--steel-line);
+  padding: 1.5rem 0 2.5rem;
+  font-size: 0.9rem;
+  color: var(--ivory-muted);
+}
+
+.site-footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+/* Not found page */
+.not-found {
+  padding: 4rem 0;
+}
+
+@media (max-width: 30rem) {
+  body {
+    font-size: 1rem;
+  }
+
+  .wrap {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .brand img {
+    width: 170px;
+  }
+
+  .intro {
+    padding-top: 2.25rem;
+  }
+
+  .products {
+    grid-template-columns: 1fr;
+  }
+
+  .product {
+    padding: 1.25rem 1rem;
+  }
+
+  .laws li {
+    grid-template-columns: 1.75rem 1fr;
+    padding: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
