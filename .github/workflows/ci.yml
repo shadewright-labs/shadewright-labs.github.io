@@ -1,8 +1,10 @@
 name: CI
 
-# Checks a pull request: HTML validation, links, and the workflows themselves.
+# Checks a pull request: HTML validation of every page, the page policy (no other origins, no inline code or
+# styles, a Content-Security-Policy on every page), links, and the workflows themselves.
 # The required check is ci-ok, which passes only when every job above it passed.
-# Run the same checks locally: npm ci --ignore-scripts && npm run validate, lychee (see the links job), actionlint.
+# Run the same checks locally: npm ci --ignore-scripts && npm run validate; scripts/stage-site.sh _site &&
+# python3 -I scripts/check-pages.py _site; lychee (see the links job); actionlint; zizmor .github.
 on:
   pull_request:
   workflow_dispatch:
@@ -25,11 +27,29 @@ jobs:
           persist-credentials: false
 
       # html-validate is pinned in package.json and package-lock.json; install scripts are not run.
+      # The npm script validates every .html file in the repository, 404.html included.
       - name: Validate HTML
         run: |
           set -euo pipefail
           npm ci --ignore-scripts --no-audit --no-fund
           npm run validate
+
+  pages:
+    name: Page policy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # The same allow-list the Pages workflow publishes; fails on any other file or dotfile.
+      - name: Stage the site
+        run: scripts/stage-site.sh _site
+
+      - name: Check the pages
+        run: python3 -I scripts/check-pages.py _site
 
   links:
     name: Links
@@ -59,10 +79,7 @@ jobs:
 
       # The same files the Pages workflow publishes.
       - name: Stage the site
-        run: |
-          set -euo pipefail
-          mkdir _site
-          cp -R index.html 404.html robots.txt .nojekyll assets _site/
+        run: scripts/stage-site.sh _site
 
       # Every link and asset inside the site must resolve, anchors included. /sablecourt/ is published by the
       # Sablecourt repository's own Pages build, so it cannot be checked here.
@@ -105,10 +122,26 @@ jobs:
           tar -xzf "${RUNNER_TEMP}/${archive}" -C "${RUNNER_TEMP}" actionlint
           "${RUNNER_TEMP}/actionlint" -color
 
+      # The token lets zizmor run its online audits (for example impostor commits and ref confusion).
+      - name: Run zizmor
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ZIZMOR_VERSION: 1.32.0
+          ZIZMOR_SHA256: bb110cc765eca9cd7efb2e284a956be5974c60027b0970f16397d86208a9957b
+        run: |
+          set -euo pipefail
+          archive="zizmor-x86_64-unknown-linux-gnu.tar.gz"
+          curl -fsSL --proto '=https' --connect-timeout 20 --max-time 60 --retry 4 --retry-delay 10 \
+            -o "${RUNNER_TEMP}/${archive}" \
+            "https://github.com/zizmorcore/zizmor/releases/download/v${ZIZMOR_VERSION}/${archive}"
+          echo "${ZIZMOR_SHA256}  ${RUNNER_TEMP}/${archive}" | sha256sum --check --strict
+          tar -xzf "${RUNNER_TEMP}/${archive}" -C "${RUNNER_TEMP}" zizmor
+          "${RUNNER_TEMP}/zizmor" .github
+
   ci-ok:
     name: ci-ok
     if: ${{ always() }}
-    needs: [html, links, workflow-lint]
+    needs: [html, pages, links, workflow-lint]
     runs-on: ubuntu-latest
     permissions: {}
     steps:

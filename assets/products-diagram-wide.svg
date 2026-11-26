@@ -1,88 +1,160 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 730" width="1200" height="730" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 1082" width="1220" height="1082" role="img" aria-labelledby="t d">
   <title id="t">How the Shadewright Labs products fit together</title>
-  <desc id="d">The operator reviews Shadewright's pull requests, approves Sablecourt's gated actions and watches Nightloom. Shadewright and Sablecourt each work alone today. Two dashed connections are not complete: a code-fault incident handoff from Shadewright to Sablecourt, whose Sablecourt intake is built and whose Shadewright sender is planned, and a read-only observer feed from Sablecourt to Nightloom, whose Sablecourt side is built and whose Nightloom side is not.</desc>
+  <desc id="d">The operator uses each product through one surface: a pull request review for Shadewright, sablectl and the web UI for Sablecourt, and the Nightloom view, which is not released. Shadewright's analyzer, executor, GitOps repository with Flux, and verifier form one chain; Sablecourt's control plane, Conclaves, managed workloads and three gates form another; Nightloom has one view and the decisions waiting. Two connections join the products. One: a one-way code-fault incident handoff from Shadewright to Sablecourt, approved by a person for each send; Sablecourt's intake is built and Shadewright's sender is planned. Two: a read-only observer feed from Sablecourt to Nightloom; Sablecourt's side is built and Nightloom's is not. Solid lines are built, dashed lines and tags are not built yet, and amber marks what a person decides.</desc>
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
-      <path d="M0 0L10 5L0 10Z" fill="#BDB5A6"/>
-    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#F0B86A"/></marker>
+    <marker id="arrow-jade" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#2DD4BF"/></marker>
   </defs>
   <style>
-    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 17px; fill: #EFE8D8; }
-    .name { font-family: "Iowan Old Style", Georgia, serif; font-size: 23px; font-weight: 600; }
-    .muted { fill: #BDB5A6; }
-    .box { fill: #24202F; stroke: #3A3447; stroke-width: 1.5; }
-    .line { fill: none; stroke: #BDB5A6; stroke-width: 1.5; }
-    .dash { stroke-dasharray: 7 6; }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 14px; fill: #EFE9DC; }
+    .serif { font-family: "Iowan Old Style", Georgia, serif; font-size: 24px; }
+    .caps { font-size: 14px; letter-spacing: 1.5px; }
+    .t { font-size: 16px; font-weight: 600; }
+    .d { fill: #BBB4C5; }
+    .p { fill: #F0B86A; }
+    .x { fill: #BBB4C5; font-style: italic; }
+    .tag { font-size: 14px; letter-spacing: 1.2px; fill: #BBB4C5; }
+    .tile { fill: #14111C; }
+    .node { fill: #08060E; stroke-width: 1.5; }
+    .ln { fill: none; stroke-width: 1.5; }
+    .dash { stroke-dasharray: 6 5; }
   </style>
-
-  <rect width="1200" height="730" fill="#0B0810"/>
-
-  <!-- The operator and what they do with each product (solid: exists) -->
-  <rect class="box" x="450" y="10" width="300" height="64" rx="6"/>
-  <text class="name" x="600" y="50" text-anchor="middle">The operator</text>
-  <path class="line" d="M450 42H170V150"/>
-  <text x="182" y="30">reviews each pull request</text>
-  <path class="line" d="M600 74V150"/>
-  <text x="612" y="118">approves gated actions</text>
-  <path class="line" d="M750 42H1030V150"/>
-  <text x="764" y="30">watches sessions and decisions</text>
-
-  <!-- Shadewright -->
-  <rect class="box" x="10" y="150" width="320" height="350" rx="6"/>
-  <rect x="10" y="150" width="320" height="4" fill="#A879FF"/>
-  <text class="name" x="30" y="190">Shadewright</text>
-  <text class="muted" x="30" y="216">Early releases</text>
-  <text x="30" y="248">Finds the fault in a cluster</text>
-  <text x="30" y="270">run with GitOps.</text>
-  <text x="30" y="318">Cluster events in</text>
-  <path class="line" d="M40 328V352" marker-end="url(#arrow)"/>
-  <text x="30" y="374">GitOps pull request for review</text>
-  <path class="line" d="M40 384V408" marker-end="url(#arrow)"/>
-  <text x="30" y="430">Rollout verified after the merge</text>
-
-  <!-- Sablecourt -->
-  <rect class="box" x="440" y="150" width="320" height="350" rx="6"/>
-  <rect x="440" y="150" width="320" height="4" fill="#2DD4BF"/>
-  <text class="name" x="460" y="190">Sablecourt</text>
-  <text class="muted" x="460" y="216">Pre-release</text>
-  <text x="460" y="248">Runs many agents under one</text>
-  <text x="460" y="270">set of rules.</text>
-  <text x="460" y="318">Manifests in</text>
-  <path class="line" d="M470 328V352" marker-end="url(#arrow)"/>
-  <text x="460" y="374">Agents, sandboxes, controllers</text>
-  <path class="line" d="M470 384V404" marker-end="url(#arrow)"/>
-  <rect x="456" y="404" width="288" height="80" rx="4" fill="#0B0810" stroke="#2DD4BF" stroke-width="1.5"/>
-  <text x="472" y="428">Model gate</text>
-  <text x="472" y="451">Data and action gate</text>
-  <text x="472" y="474">Approval queue</text>
-
-  <!-- Nightloom -->
-  <rect class="box" x="870" y="150" width="320" height="350" rx="6"/>
-  <rect x="870" y="150" width="320" height="4" fill="#8B3DFF"/>
-  <text class="name" x="890" y="190">Nightloom</text>
-  <text class="muted" x="890" y="216">Not released</text>
-  <text x="890" y="248">One view of coding sessions</text>
-  <text x="890" y="270">and pending decisions.</text>
-  <text x="890" y="318">Sessions on terminals</text>
-  <text x="890" y="340">and machines</text>
-  <path class="line" d="M900 350V374" marker-end="url(#arrow)"/>
-  <text x="890" y="396">One view, and the decisions</text>
-  <text x="890" y="418">waiting for the operator</text>
-
-  <!-- Connections between products (dashed: not complete) -->
-  <path class="line dash" d="M170 500V550H540V500" marker-end="url(#arrow)"/>
-  <text x="355" y="580" text-anchor="middle">Code-fault incident handoff</text>
-  <text class="muted" x="355" y="603" text-anchor="middle">Sablecourt intake: built</text>
-  <text class="muted" x="355" y="626" text-anchor="middle">Shadewright sender: planned</text>
-
-  <path class="line dash" d="M660 500V550H1030V500" marker-end="url(#arrow)"/>
-  <text x="845" y="580" text-anchor="middle">Read-only observer feed</text>
-  <text class="muted" x="845" y="603" text-anchor="middle">Sablecourt side: built</text>
-  <text class="muted" x="845" y="626" text-anchor="middle">Nightloom side: not built</text>
-
-  <!-- Legend -->
-  <path class="line" d="M10 700H60"/>
-  <text x="72" y="706">exists today</text>
-  <path class="line dash" d="M250 700H310" marker-end="url(#arrow)"/>
-  <text x="322" y="706">connection between products, with what is built</text>
+  <rect width="1220" height="1082" fill="#0B0810"/>
+  <clipPath id="c-op"><rect x="1" y="1" width="1218" height="176" rx="14"/></clipPath>
+  <rect class="tile" x="1" y="1" width="1218" height="176" rx="14"/>
+  <rect x="1" y="1" width="1218" height="6" fill="#EFE9DC" clip-path="url(#c-op)"/>
+  <rect x="1" y="1" width="1218" height="176" rx="14" fill="none" stroke="#EFE9DC" stroke-width="1.5"/>
+  <text class="serif" x="26" y="44">The operator</text>
+  <text class="caps d" x="190" y="43">ONE PERSON, THREE SURFACES</text>
+  <rect class="node" x="19.0" y="62" width="330" height="92" rx="10" stroke="#EFE9DC"/>
+  <text class="t" x="35.0" y="93">Pull request review</text>
+  <text class="d" x="35.0" y="118">On the Git host, under branch rules</text>
+  <text class="p" x="35.0" y="140">A person reviews and merges</text>
+  <path class="ln" d="M184.0 154V222" stroke="#EFE9DC"/>
+  <rect class="node" x="445.0" y="62" width="330" height="92" rx="10" stroke="#EFE9DC"/>
+  <text class="t" x="461.0" y="93">sablectl and the web UI</text>
+  <text class="d" x="461.0" y="118">Workloads, Conclaves, approvals</text>
+  <text class="p" x="461.0" y="140">A person approves gated actions</text>
+  <path class="ln" d="M610.0 154V222" stroke="#EFE9DC"/>
+  <rect class="node" x="871.0" y="62" width="330" height="92" rx="10" stroke="#EFE9DC"/>
+  <text class="t" x="887.0" y="93">Nightloom view</text>
+  <text class="d" x="887.0" y="118">Sessions and waiting decisions</text>
+  <text class="d" x="887.0" y="140">Not released</text>
+  <path class="ln" d="M1036.0 154V222" stroke="#EFE9DC"/>
+  <clipPath id="c-shadewright"><rect x="1" y="222" width="366" height="650" rx="14"/></clipPath>
+  <rect class="tile" x="1" y="222" width="366" height="650" rx="14"/>
+  <rect x="1" y="222" width="366" height="7" fill="#A879FF" clip-path="url(#c-shadewright)"/>
+  <rect x="1" y="222" width="366" height="650" rx="14" fill="none" stroke="#A879FF" stroke-width="1.5"/>
+  <text class="serif" x="23" y="268">Shadewright</text>
+  <text class="caps" x="23" y="294" style="fill:#A879FF">THE GUARDIAN · EARLY RELEASES</text>
+  <rect class="node" x="19" y="314" width="330" height="116" rx="10" stroke="#A879FF"/>
+  <text class="t" x="35" y="345">Analyzer</text>
+  <text class="d" x="35" y="370">Groups symptoms into incidents</text>
+  <text class="d" x="35" y="392">Reads the cluster, no Git credential</text>
+  <text x="35" y="414" fill="#A879FF" style="fill:#A879FF">A model's answer is only a proposal</text>
+  <path class="ln" d="M184.0 430V454" stroke="#A879FF"/>
+  <rect class="node" x="19" y="454" width="330" height="116" rx="10" stroke="#A879FF"/>
+  <text class="t" x="35" y="485">Executor</text>
+  <text class="d" x="35" y="510">Checks each proposal against policy</text>
+  <text class="d" x="35" y="532">Opens the pull request with the fix</text>
+  <text x="35" y="554" fill="#A879FF" style="fill:#A879FF">Holds the Git App, reads no Secrets</text>
+  <path class="ln" d="M184.0 570V594" stroke="#A879FF"/>
+  <rect class="node" x="19" y="594" width="330" height="116" rx="10" stroke="#A879FF"/>
+  <text class="t" x="35" y="625">GitOps repository and Flux</text>
+  <text class="d" x="35" y="650">Your branch rules decide what merges</text>
+  <text class="d" x="35" y="672">Flux applies the merged change</text>
+  <text x="35" y="694" fill="#A879FF" style="fill:#A879FF">The only path to a workload</text>
+  <path class="ln" d="M184.0 710V734" stroke="#A879FF"/>
+  <rect class="node" x="19" y="734" width="330" height="116" rx="10" stroke="#A879FF"/>
+  <text class="t" x="35" y="765">Verifier</text>
+  <text class="d" x="35" y="790">Samples the pods of the rollout</text>
+  <text class="d" x="35" y="812">Off by default for now</text>
+  <text x="35" y="834" fill="#A879FF" style="fill:#A879FF">No model, no Git App, no Secrets</text>
+  <clipPath id="c-sablecourt"><rect x="427" y="222" width="366" height="650" rx="14"/></clipPath>
+  <rect class="tile" x="427" y="222" width="366" height="650" rx="14"/>
+  <rect x="427" y="222" width="366" height="7" fill="#2DD4BF" clip-path="url(#c-sablecourt)"/>
+  <rect x="427" y="222" width="366" height="650" rx="14" fill="none" stroke="#2DD4BF" stroke-width="1.5"/>
+  <text class="serif" x="449" y="268">Sablecourt</text>
+  <text class="caps" x="449" y="294" style="fill:#2DD4BF">THE COURT · NOT RELEASED YET</text>
+  <rect class="node" x="445" y="314" width="330" height="116" rx="10" stroke="#2DD4BF"/>
+  <text class="t" x="461" y="345">Control plane</text>
+  <text class="d" x="461" y="370">Runs what the manifests declare</text>
+  <text class="d" x="461" y="392">On a workstation or a cluster</text>
+  <text x="461" y="414" fill="#2DD4BF" style="fill:#2DD4BF">Audit chain, not anchored yet</text>
+  <path class="ln" d="M610.0 430V454" stroke="#2DD4BF"/>
+  <rect class="node" x="445" y="454" width="330" height="116" rx="10" stroke="#2DD4BF"/>
+  <text class="t" x="461" y="485">Conclaves (agent councils)</text>
+  <text class="d" x="461" y="510">Rooms where agents work together</text>
+  <text class="d" x="461" y="532">and share redacted artifacts</text>
+  <text x="461" y="554" fill="#2DD4BF" style="fill:#2DD4BF">Message limits stop runaway loops</text>
+  <path class="ln" d="M610.0 570V594" stroke="#2DD4BF"/>
+  <rect class="node" x="445" y="594" width="330" height="116" rx="10" stroke="#2DD4BF"/>
+  <text class="t" x="461" y="625">Managed workloads</text>
+  <text class="d" x="461" y="650">Rootless containers or OS sandbox</text>
+  <text x="461" y="672" fill="#2DD4BF" style="fill:#2DD4BF">No upstream API keys or Git tokens</text>
+  <rect x="461" y="679" width="85" height="21" rx="10.5" fill="none" stroke="#BBB4C5" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text class="tag" x="468" y="694">PLANNED</text>
+  <text class="x" x="554" y="694">gVisor or Kata on Kubernetes</text>
+  <path class="ln" d="M610.0 710V734" stroke="#2DD4BF"/>
+  <rect class="node" x="445" y="734" width="330" height="116" rx="10" stroke="#2DD4BF"/>
+  <text class="t" x="461" y="765">Three gates</text>
+  <text class="d" x="461" y="790">Model gate: cost per task and day</text>
+  <text class="d" x="461" y="812">Data and action gate: allowlists</text>
+  <text class="p" x="461" y="834">Approval queue: a person confirms</text>
+  <clipPath id="c-nightloom"><rect x="853" y="222" width="366" height="650" rx="14"/></clipPath>
+  <rect class="tile" x="853" y="222" width="366" height="650" rx="14"/>
+  <rect x="853" y="222" width="366" height="7" fill="#8B3DFF" clip-path="url(#c-nightloom)"/>
+  <rect x="853" y="222" width="366" height="650" rx="14" fill="none" stroke="#8B3DFF" stroke-width="1.5"/>
+  <text class="serif" x="875" y="268">Nightloom</text>
+  <text class="caps" x="875" y="294" style="fill:#B794FF">THE WATCHER · NOT RELEASED</text>
+  <rect class="node" x="871" y="314" width="330" height="116" rx="10" stroke="#8B3DFF"/>
+  <text class="t" x="887" y="345">One view</text>
+  <text class="d" x="887" y="370">Coding sessions across terminals</text>
+  <text class="d" x="887" y="392">and machines</text>
+  <text x="887" y="414" fill="#B794FF" style="fill:#B794FF">See what's running</text>
+  <path class="ln" d="M1036.0 430V454" stroke="#8B3DFF"/>
+  <rect class="node" x="871" y="454" width="330" height="116" rx="10" stroke="#8B3DFF"/>
+  <text class="t" x="887" y="485">Decisions waiting</text>
+  <text class="d" x="887" y="510">Decisions waiting for the operator</text>
+  <text class="d" x="887" y="532">in the same view</text>
+  <text class="p" x="887" y="554">Know what needs you</text>
+  <text class="d" x="1036.0" y="634" text-anchor="middle" style="font-size:15px">Not released.</text>
+  <text class="d" x="1036.0" y="656" text-anchor="middle" style="font-size:15px">No public code yet.</text>
+  <path class="ln dash" d="M349 372.0H382.0" stroke="#F0B86A"/>
+  <path class="ln" d="M412.0 372.0H445" stroke="#F0B86A" marker-end="url(#arrow-amber)"/>
+  <rect x="382.0" y="360.0" width="30" height="24" rx="12" fill="#08060E" stroke="#F0B86A" stroke-width="1.5"/>
+  <text class="t" x="397.0" y="377.0" text-anchor="middle" style="font-size:14px">1</text>
+  <path class="ln" d="M775 372.0H808.0" stroke="#2DD4BF"/>
+  <path class="ln dash" d="M838.0 372.0H871" stroke="#2DD4BF" marker-end="url(#arrow-jade)"/>
+  <rect x="808.0" y="360.0" width="30" height="24" rx="12" fill="#08060E" stroke="#2DD4BF" stroke-width="1.5"/>
+  <text class="t" x="823.0" y="377.0" text-anchor="middle" style="font-size:14px">2</text>
+  <rect class="tile" x="1" y="900" width="602" height="104" rx="12" stroke="#3A3447" stroke-width="1.5"/>
+  <rect x="22" y="918" width="30" height="24" rx="12" fill="#08060E" stroke="#F0B86A" stroke-width="1.5"/>
+  <text class="t" x="37" y="935" text-anchor="middle" style="font-size:14px">1</text>
+  <text class="t" x="67" y="936">Code-fault incident handoff, one way</text>
+  <text class="p" x="67" y="961">A person approves each send</text>
+  <text x="67" y="985">Sablecourt intake: built</text>
+  <rect x="271" y="970" width="85" height="21" rx="10.5" fill="none" stroke="#BBB4C5" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text class="tag" x="278" y="985">PLANNED</text>
+  <text class="x" x="364" y="985">Shadewright sender</text>
+  <rect class="tile" x="617" y="900" width="602" height="104" rx="12" stroke="#3A3447" stroke-width="1.5"/>
+  <rect x="638" y="918" width="30" height="24" rx="12" fill="#08060E" stroke="#2DD4BF" stroke-width="1.5"/>
+  <text class="t" x="653" y="935" text-anchor="middle" style="font-size:14px">2</text>
+  <text class="t" x="683" y="936">Read-only observer feed</text>
+  <text class="d" x="683" y="961">Snapshot, live stream and task output</text>
+  <text x="683" y="985">Sablecourt side: built</text>
+  <rect x="887" y="970" width="100" height="21" rx="10.5" fill="none" stroke="#BBB4C5" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text class="tag" x="894" y="985">NOT BUILT</text>
+  <text class="x" x="995" y="985">Nightloom side</text>
+  <path class="ln" d="M1 1043H35" stroke="#EFE9DC"/>
+  <text class="d" x="45" y="1048">built</text>
+  <path class="ln dash" d="M141 1043H175" stroke="#EFE9DC"/>
+  <rect x="185" y="1033" width="85" height="21" rx="10.5" fill="none" stroke="#BBB4C5" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text class="tag" x="192" y="1048">PLANNED</text>
+  <text class="d" x="278" y="1048">not built yet</text>
+  <path class="ln" d="M423 1043H457" stroke="#F0B86A"/>
+  <text class="d" x="467" y="1048">a person decides</text>
+  <rect x="639" y="1031" width="26" height="22" rx="11" fill="#08060E" stroke="#EFE9DC" stroke-width="1.2"/>
+  <text class="t" x="652" y="1047" text-anchor="middle" style="font-size:14px">1</text>
+  <text class="d" x="679" y="1048">contract between products</text>
 </svg>

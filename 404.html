@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'">
+    <meta name="referrer" content="no-referrer">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Page not found | Shadewright Labs</title>
     <meta name="robots" content="noindex">
@@ -15,24 +17,32 @@
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="site-header">
+    <header class="hero hero--small">
       <div class="wrap">
-        <a class="brand" href="/">
-          <img src="/assets/shadewright-labs/logo-horizontal-dark.svg" width="200" height="70" alt="Shadewright Labs home">
-        </a>
+        <nav class="hero-nav" aria-label="Main">
+          <a href="/">Home</a>
+          <a href="https://github.com/shadewright-labs">GitHub</a>
+        </nav>
+        <div class="hero-art">
+          <a class="hero-logo" href="/">
+            <img src="/assets/shadewright-labs/logo-horizontal-dark.svg" alt="Shadewright Labs home" width="1236" height="430">
+          </a>
+        </div>
       </div>
     </header>
 
-    <main id="main">
-      <div class="wrap not-found">
-        <h1>Page not found</h1>
-        <p>There is no page at this address.</p>
-        <ul>
-          <li><a href="/">Shadewright Labs home</a></li>
-          <li><a href="https://shadewright.io/">Shadewright documentation</a></li>
-          <li><a href="https://github.com/shadewright-labs">Shadewright Labs on GitHub</a></li>
-        </ul>
-      </div>
+    <main id="main" class="wrap not-found">
+      <h1>Page not found</h1>
+      <p>There is no page at this address.</p>
+      <ul>
+        <li><a href="/">Shadewright Labs home</a></li>
+        <li><a href="https://shadewright.io/">Shadewright documentation</a></li>
+        <li><a href="https://github.com/shadewright-labs/sablecourt">Sablecourt on GitHub</a></li>
+      </ul>
     </main>
+
+    <footer class="wrap footer">
+      <p>Shadewright Labs</p>
+    </footer>
   </body>
 </html>
