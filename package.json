@@ -1,0 +1,12 @@
+{
+  "name": "shadewright-labs-site-checks",
+  "private": true,
+  "description": "Checks for the Shadewright Labs organisation site. The site itself has no build step.",
+  "license": "Apache-2.0",
+  "scripts": {
+    "validate": "html-validate index.html 404.html"
+  },
+  "devDependencies": {
+    "html-validate": "11.21.1"
+  }
+}

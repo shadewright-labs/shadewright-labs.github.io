@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shadewright Labs</title>
+    <meta name="description" content="Shadewright Labs builds Shadewright, Sablecourt and Nightloom: tools for Kubernetes fixes under review, coding agents under shared rules, and one view of running sessions.">
+    <meta name="theme-color" content="#0b0810">
+    <link rel="icon" href="assets/shadewright-labs/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/shadewright-labs/favicon.ico" sizes="16x16 32x32">
+    <link rel="apple-touch-icon" href="assets/shadewright-labs/apple-touch-icon.png">
+    <link rel="stylesheet" href="assets/site.css">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Shadewright Labs">
+    <meta property="og:title" content="Shadewright Labs">
+    <meta property="og:description" content="Shadewright, Sablecourt and Nightloom: Kubernetes fixes put up for review, coding agents under one set of rules, and one view of running sessions.">
+    <meta property="og:url" content="https://shadewrightlabs.com/">
+    <meta property="og:image" content="https://shadewrightlabs.com/assets/shadewright-labs/social-preview.png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="640">
+    <meta property="og:image:alt" content="The Shadewright Labs seal and wordmark">
+    <meta name="twitter:card" content="summary_large_image">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="./">
+          <img src="assets/shadewright-labs/logo-horizontal-dark.svg" width="200" height="70" alt="Shadewright Labs home">
+        </a>
+        <nav class="site-nav" aria-label="Main">
+          <ul>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#security-laws">Security laws</a></li>
+            <li><a href="https://github.com/shadewright-labs">GitHub</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="wrap">
+        <section class="intro" aria-labelledby="intro-title">
+          <p class="tagline">Crafted in Shadow. Engineered with Purpose.</p>
+          <h1 id="intro-title">Shadewright Labs</h1>
+          <p class="lead">An independent software engineering and research house. Shadewright brings Kubernetes fixes to review. Sablecourt coordinates agents under shared rules. Nightloom keeps work in view.</p>
+          <p>The source of Shadewright and Sablecourt is public on GitHub. Nightloom is not public yet.</p>
+        </section>
+
+        <section id="products" aria-labelledby="products-title">
+          <h2 id="products-title">Products</h2>
+          <ul class="products">
+            <li class="product product--shadewright">
+              <div class="product-head">
+                <img src="assets/shadewright/glyph.svg" width="56" height="56" alt="">
+                <div>
+                  <h3>Shadewright</h3>
+                  <p class="hook">Find the fault. Put the fix up for review.</p>
+                </div>
+              </div>
+              <span class="status">Early releases</span>
+              <p>A Kubernetes operator for clusters run with GitOps. It finds the fault and puts the fix up for review as a pull request.</p>
+              <ul>
+                <li>Watches events and object status in the namespaces you choose and groups them into incidents.</li>
+                <li>Proposes a typed change from a closed catalog of actions, checked by deterministic policy.</li>
+                <li>Opens a pull request in your GitOps repository with the evidence and a rollback plan. Your branch rules decide what merges.</li>
+                <li>Never changes your workloads itself: it writes only its own control state.</li>
+              </ul>
+              <ul class="product-links">
+                <li><a href="https://shadewright.io/">Documentation</a></li>
+                <li><a href="https://github.com/shadewright-labs/shadewright">Source on GitHub</a></li>
+              </ul>
+            </li>
+
+            <li class="product product--sablecourt">
+              <div class="product-head">
+                <img src="assets/sablecourt/glyph.svg" width="56" height="56" alt="">
+                <div>
+                  <h3>Sablecourt</h3>
+                  <p class="hook">Many agents. One set of rules.</p>
+                </div>
+              </div>
+              <span class="status">Pre-release, not released yet</span>
+              <p>Runs many coding agents, sandboxes and deterministic controllers under one set of rules, declared in manifests.</p>
+              <ul>
+                <li>A model gate in front of the model providers, with cost accounting per task and per day. Deterministic controllers cannot call a model at all.</li>
+                <li>A data and action gate: allowlisted tools, typed GitOps actions and a policy that says allow, approve or deny.</li>
+                <li>Approvals pinned to the SHA-256 digest of the payload, confirmed in a native macOS dialog.</li>
+                <li>Shared budgets and an audit log.</li>
+              </ul>
+              <ul class="product-links">
+                <li><a href="/sablecourt/">Documentation</a> <span class="muted">(published with the first release)</span></li>
+                <li><a href="https://github.com/shadewright-labs/sablecourt">Source on GitHub</a></li>
+              </ul>
+            </li>
+
+            <li class="product product--nightloom">
+              <div class="product-head">
+                <img src="assets/nightloom/eclipse.svg" width="56" height="56" alt="">
+                <div>
+                  <h3>Nightloom</h3>
+                  <p class="hook">See what's running. Know what needs you.</p>
+                </div>
+              </div>
+              <span class="status">Not released</span>
+              <p>One view of the coding sessions running across terminals and machines, and of the decisions waiting for the operator.</p>
+              <p class="muted">Nightloom is not public yet. There is no repository or download to link to.</p>
+            </li>
+          </ul>
+        </section>
+
+        <section id="security-laws" aria-labelledby="laws-title">
+          <h2 id="laws-title">Six shared security laws</h2>
+          <p class="section-note">The products share one set of security rules. They are the rules each product is built to; a product's own security page says where it stands today and what is still open.</p>
+          <ol class="laws">
+            <li>
+              <strong>Model output is never authorization.</strong>
+              <p>A model or an agent can only propose. Deterministic code or a person decides what runs.</p>
+            </li>
+            <li>
+              <strong>Evidence over inference.</strong>
+              <p>A status rests on timestamped observations of the system and says when they were made.</p>
+            </li>
+            <li>
+              <strong>Zero raw credentials in untrusted contexts.</strong>
+              <p>A credential stays with the component it was issued to; model-directed work gets a short-lived lease scoped to one task.</p>
+            </li>
+            <li>
+              <strong>Bounded redaction at every disclosure boundary.</strong>
+              <p>Outside text is redacted for known secret forms, in bounded time, before it reaches a model, storage, logs or a person.</p>
+            </li>
+            <li>
+              <strong>Out-of-band confirmation for high-impact actions.</strong>
+              <p>A browser click is not proof of intent, so a person confirms on a channel that a local program cannot drive.</p>
+            </li>
+            <li>
+              <strong>Tamper-evident audit and separated authority.</strong>
+              <p>Every decision leaves an audit record the executor cannot rewrite undetected, and no identity approves its own work.</p>
+            </li>
+          </ol>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <ul>
+          <li><a href="https://github.com/shadewright-labs">GitHub organisation</a></li>
+          <li><a href="https://shadewright.io/">Shadewright</a></li>
+          <li><a href="https://github.com/shadewright-labs/sablecourt">Sablecourt</a></li>
+        </ul>
+        <p>Shadewright Labs. The source of this site is on <a href="https://github.com/shadewright-labs/shadewright-labs.github.io">GitHub</a> under the Apache License 2.0.</p>
+      </div>
+    </footer>
+  </body>
+</html>
