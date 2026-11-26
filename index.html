@@ -32,6 +32,7 @@
         <nav class="site-nav" aria-label="Main">
           <ul>
             <li><a href="#products">Products</a></li>
+            <li><a href="#how-they-fit">How they fit</a></li>
             <li><a href="#security-laws">Security laws</a></li>
             <li><a href="https://github.com/shadewright-labs">GitHub</a></li>
           </ul>
@@ -108,6 +109,27 @@
               <p class="muted">Nightloom is not public yet. There is no repository or download to link to.</p>
             </li>
           </ul>
+        </section>
+
+        <section id="how-they-fit" aria-labelledby="fit-title">
+          <h2 id="fit-title">How the products fit together</h2>
+          <figure class="diagram">
+            <picture>
+              <source media="(max-width: 40rem)" srcset="assets/products-diagram-narrow.svg" width="360" height="1230">
+              <img src="assets/products-diagram-wide.svg" width="1200" height="730" alt="Diagram: the operator reviews Shadewright's pull requests, approves Sablecourt's gated actions and watches Nightloom. Two dashed connections are not complete: a code-fault incident handoff from Shadewright to Sablecourt, and a read-only observer feed from Sablecourt to Nightloom. The list below describes it in full.">
+            </picture>
+            <figcaption>The products share no code and no database. The only links between them are the two HTTP contracts drawn dashed, and today only Sablecourt's end of each is built.</figcaption>
+          </figure>
+          <details class="diagram-text">
+            <summary>The diagram in words</summary>
+            <ul>
+              <li><strong>Shadewright</strong> works alone today. Cluster events go in; a GitOps pull request comes out for the operator to review; after the merge it verifies the rollout.</li>
+              <li><strong>Sablecourt</strong> works alone today. Manifests go in; agents, sandboxes and controllers run behind the model gate, the data and action gate and the approval queue, where the operator approves gated actions.</li>
+              <li><strong>Nightloom</strong> (not released) watches the coding sessions on terminals and machines and shows the operator one view of them and of the decisions waiting.</li>
+              <li><strong>Code-fault incident handoff</strong>, Shadewright to Sablecourt: an incident that needs an application code change, approved by a person, opens a council of agents in Sablecourt. Sablecourt's intake is built; Shadewright's sender is planned.</li>
+              <li><strong>Read-only observer feed</strong>, Sablecourt to Nightloom: a snapshot, a live stream and task output. Sablecourt's side is built; Nightloom's side is not.</li>
+            </ul>
+          </details>
         </section>
 
         <section id="security-laws" aria-labelledby="laws-title">

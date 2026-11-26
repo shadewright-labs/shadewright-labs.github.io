@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 1230" width="360" height="1230" role="img" aria-labelledby="t d">
+  <title id="t">How the Shadewright Labs products fit together</title>
+  <desc id="d">The operator reviews Shadewright's pull requests, approves Sablecourt's gated actions and watches Nightloom. Shadewright and Sablecourt each work alone today. Two dashed connections are not complete: a code-fault incident handoff from Shadewright to Sablecourt, whose Sablecourt intake is built and whose Shadewright sender is planned, and a read-only observer feed from Sablecourt to Nightloom, whose Sablecourt side is built and whose Nightloom side is not.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#BDB5A6"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 16px; fill: #EFE8D8; }
+    .name { font-family: "Iowan Old Style", Georgia, serif; font-size: 21px; font-weight: 600; }
+    .muted { fill: #BDB5A6; }
+    .box { fill: #24202F; stroke: #3A3447; stroke-width: 1.5; }
+    .line { fill: none; stroke: #BDB5A6; stroke-width: 1.5; }
+    .dash { stroke-dasharray: 7 6; }
+  </style>
+
+  <rect width="360" height="1230" fill="#0B0810"/>
+
+  <!-- The operator, joined to each product (solid: exists) -->
+  <rect class="box" x="40" y="8" width="312" height="48" rx="6"/>
+  <text class="name" x="196" y="39" text-anchor="middle">The operator</text>
+  <path class="line" d="M40 32H16V1099H36"/>
+  <path class="line" d="M16 339H36"/>
+  <path class="line" d="M16 745H36"/>
+
+  <!-- Shadewright -->
+  <rect class="box" x="36" y="80" width="316" height="276" rx="6"/>
+  <rect x="36" y="80" width="316" height="4" fill="#A879FF"/>
+  <text class="name" x="52" y="114">Shadewright</text>
+  <text class="muted" x="52" y="138">Early releases</text>
+  <text x="52" y="166">Finds the fault in a cluster</text>
+  <text x="52" y="186">run with GitOps.</text>
+  <text x="52" y="218">Cluster events in</text>
+  <path class="line" d="M62 226V246" marker-end="url(#arrow)"/>
+  <text x="52" y="264">GitOps pull request for review</text>
+  <path class="line" d="M62 272V292" marker-end="url(#arrow)"/>
+  <text x="52" y="310">Rollout verified after the merge</text>
+  <text class="muted" x="52" y="344">Operator reviews each pull request</text>
+
+  <!-- Handoff, Shadewright to Sablecourt (dashed: not complete) -->
+  <path class="line dash" d="M62 356V446" marker-end="url(#arrow)"/>
+  <text x="76" y="384">Code-fault incident handoff</text>
+  <text class="muted" x="76" y="405">Sablecourt intake: built</text>
+  <text class="muted" x="76" y="426">Shadewright sender: planned</text>
+
+  <!-- Sablecourt -->
+  <rect class="box" x="36" y="446" width="316" height="316" rx="6"/>
+  <rect x="36" y="446" width="316" height="4" fill="#2DD4BF"/>
+  <text class="name" x="52" y="480">Sablecourt</text>
+  <text class="muted" x="52" y="504">Pre-release</text>
+  <text x="52" y="532">Runs many agents under one</text>
+  <text x="52" y="552">set of rules.</text>
+  <text x="52" y="584">Manifests in</text>
+  <path class="line" d="M62 592V612" marker-end="url(#arrow)"/>
+  <text x="52" y="630">Agents, sandboxes, controllers</text>
+  <path class="line" d="M62 638V654" marker-end="url(#arrow)"/>
+  <rect x="48" y="654" width="292" height="74" rx="4" fill="#0B0810" stroke="#2DD4BF" stroke-width="1.5"/>
+  <text x="62" y="676">Model gate</text>
+  <text x="62" y="697">Data and action gate</text>
+  <text x="62" y="718">Approval queue</text>
+  <text class="muted" x="52" y="750">Operator approves gated actions</text>
+
+  <!-- Observer feed, Sablecourt to Nightloom (dashed: not complete) -->
+  <path class="line dash" d="M62 762V852" marker-end="url(#arrow)"/>
+  <text x="76" y="790">Read-only observer feed</text>
+  <text class="muted" x="76" y="811">Sablecourt side: built</text>
+  <text class="muted" x="76" y="832">Nightloom side: not built</text>
+
+  <!-- Nightloom -->
+  <rect class="box" x="36" y="852" width="316" height="262" rx="6"/>
+  <rect x="36" y="852" width="316" height="4" fill="#8B3DFF"/>
+  <text class="name" x="52" y="886">Nightloom</text>
+  <text class="muted" x="52" y="910">Not released</text>
+  <text x="52" y="938">One view of coding sessions</text>
+  <text x="52" y="958">and pending decisions.</text>
+  <text x="52" y="990">Sessions on terminals</text>
+  <text x="52" y="1010">and machines</text>
+  <path class="line" d="M62 1018V1038" marker-end="url(#arrow)"/>
+  <text x="52" y="1056">One view, and the decisions</text>
+  <text x="52" y="1076">waiting for the operator</text>
+  <text class="muted" x="52" y="1104">Operator watches and decides</text>
+
+  <!-- Legend -->
+  <path class="line" d="M16 1160H56"/>
+  <text x="68" y="1166">exists today</text>
+  <path class="line dash" d="M16 1196H56" marker-end="url(#arrow)"/>
+  <text x="68" y="1194">connection between products,</text>
+  <text x="68" y="1214">with what is built</text>
+</svg>
