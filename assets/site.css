@@ -689,3 +689,10 @@ figure {
     transition: none !important;
   }
 }
+
+.topbar-glyph {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  border-radius: 4px;
+}
