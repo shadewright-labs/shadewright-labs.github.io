@@ -1,0 +1,121 @@
+name: CI
+
+# Checks a pull request: HTML validation, links, and the workflows themselves.
+# The required check is ci-ok, which passes only when every job above it passed.
+# Run the same checks locally: npm ci --ignore-scripts && npm run validate, lychee (see the links job), actionlint.
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  html:
+    name: HTML validation
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # html-validate is pinned in package.json and package-lock.json; install scripts are not run.
+      - name: Validate HTML
+        run: |
+          set -euo pipefail
+          npm ci --ignore-scripts --no-audit --no-fund
+          npm run validate
+
+  links:
+    name: Links
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install lychee
+        env:
+          LYCHEE_VERSION: 0.24.2
+          LYCHEE_SHA256: 1f4e0ef7f6554a6ed33dd7ac144fb2e1bbed98598e7af973042fc5cd43951c9a
+        run: |
+          set -euo pipefail
+          archive="lychee-x86_64-unknown-linux-gnu.tar.gz"
+          curl -fsSL --proto '=https' --connect-timeout 20 --max-time 120 --retry 4 --retry-delay 10 \
+            -o "${RUNNER_TEMP}/${archive}" \
+            "https://github.com/lycheeverse/lychee/releases/download/lychee-v${LYCHEE_VERSION}/${archive}"
+          echo "${LYCHEE_SHA256}  ${RUNNER_TEMP}/${archive}" | sha256sum --check --strict
+          tar -xzf "${RUNNER_TEMP}/${archive}" -C "${RUNNER_TEMP}" --strip-components=1 \
+            "lychee-x86_64-unknown-linux-gnu/lychee"
+          "${RUNNER_TEMP}/lychee" --version
+
+      # The same files the Pages workflow publishes.
+      - name: Stage the site
+        run: |
+          set -euo pipefail
+          mkdir _site
+          cp -R index.html 404.html robots.txt .nojekyll assets _site/
+
+      # Every link and asset inside the site must resolve, anchors included. /sablecourt/ is published by the
+      # Sablecourt repository's own Pages build, so it cannot be checked here.
+      - name: Check internal links
+        run: |
+          "${RUNNER_TEMP}/lychee" --offline --no-progress \
+            --root-dir "${GITHUB_WORKSPACE}/_site" --index-files index.html --include-fragments \
+            --exclude '^file://.*/sablecourt/?$' \
+            _site/index.html _site/404.html
+
+      # External links fail the job only on a real error such as a 404. Timeouts and rate limits pass.
+      - name: Check external links
+        run: |
+          "${RUNNER_TEMP}/lychee" --no-progress \
+            --root-dir "${GITHUB_WORKSPACE}/_site" --exclude '^file:' \
+            --timeout 20 --max-retries 2 --accept-timeouts --accept '200..=299,429' \
+            _site/index.html _site/404.html
+
+  workflow-lint:
+    name: Workflow lint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Run actionlint
+        env:
+          ACTIONLINT_VERSION: 1.7.12
+          ACTIONLINT_SHA256: 8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8
+        run: |
+          set -euo pipefail
+          archive="actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz"
+          curl -fsSL --proto '=https' --connect-timeout 20 --max-time 60 --retry 4 --retry-delay 10 \
+            -o "${RUNNER_TEMP}/${archive}" \
+            "https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/${archive}"
+          echo "${ACTIONLINT_SHA256}  ${RUNNER_TEMP}/${archive}" | sha256sum --check --strict
+          tar -xzf "${RUNNER_TEMP}/${archive}" -C "${RUNNER_TEMP}" actionlint
+          "${RUNNER_TEMP}/actionlint" -color
+
+  ci-ok:
+    name: ci-ok
+    if: ${{ always() }}
+    needs: [html, links, workflow-lint]
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: Check the results
+        env:
+          NEEDS: ${{ toJSON(needs) }}
+        run: |
+          set -euo pipefail
+          printf '%s\n' "${NEEDS}" | jq -r 'to_entries[] | "\(.key): \(.value.result)"'
+          printf '%s\n' "${NEEDS}" | jq -e '[.[].result] | all(. == "success")' > /dev/null
