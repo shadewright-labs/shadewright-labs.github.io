@@ -1,0 +1,313 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 560" width="1920" height="560" aria-hidden="true">
+  <defs>
+    <radialGradient id="ivory-halo">
+      <stop offset="0%" stop-color="#efe8d8" stop-opacity="0.48"/>
+      <stop offset="45%" stop-color="#efe8d8" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#efe8d8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="violet-soft">
+      <stop offset="0%" stop-color="#b794ff" stop-opacity="0.58"/>
+      <stop offset="45%" stop-color="#8b3dff" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#8b3dff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="violet-bloom">
+      <stop offset="0%" stop-color="#b794ff" stop-opacity="0.88"/>
+      <stop offset="32%" stop-color="#8b3dff" stop-opacity="0.44"/>
+      <stop offset="70%" stop-color="#8b3dff" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#8b3dff" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .cluster-fill {
+        fill: #8b3dff;
+        fill-opacity: 0.036;
+      }
+      .edge-ivory {
+        fill: none;
+        stroke: #efe8d8;
+        stroke-opacity: 0.17;
+        stroke-width: 0.9;
+        stroke-linecap: round;
+      }
+      .edge-violet {
+        fill: none;
+        stroke: #b794ff;
+        stroke-opacity: 0.26;
+        stroke-width: 0.95;
+        stroke-linecap: round;
+      }
+      .edge-chord {
+        fill: none;
+        stroke: #8b3dff;
+        stroke-opacity: 0.2;
+        stroke-width: 0.7;
+        stroke-linecap: round;
+      }
+      .edge-sky {
+        fill: none;
+        stroke: #efe8d8;
+        stroke-opacity: 0.14;
+        stroke-width: 0.75;
+        stroke-linecap: round;
+      }
+      .bridge {
+        fill: none;
+        stroke: #b794ff;
+        stroke-opacity: 0.15;
+        stroke-width: 0.75;
+        stroke-dasharray: 2 7;
+        stroke-linecap: round;
+      }
+      .star-ivory {
+        fill: #efe8d8;
+        fill-opacity: 0.68;
+      }
+      .star-ivory-dim {
+        fill: #efe8d8;
+        fill-opacity: 0.44;
+      }
+      .star-violet {
+        fill: #b794ff;
+        fill-opacity: 0.8;
+      }
+      .star-field {
+        fill: #efe8d8;
+        fill-opacity: 0.38;
+      }
+      .star-field-violet {
+        fill: #b794ff;
+        fill-opacity: 0.44;
+      }
+      .pulse-1 {
+        animation: labs-pulse 22s ease-in-out -4s infinite;
+      }
+      .pulse-2 {
+        animation: labs-pulse 27s ease-in-out -11s infinite;
+      }
+      .pulse-3 {
+        animation: labs-pulse 29s ease-in-out -17s infinite;
+      }
+      .pulse-4 {
+        animation: labs-pulse 23s ease-in-out -7s infinite;
+      }
+      .pulse-5 {
+        animation: labs-pulse 31s ease-in-out -19s infinite;
+      }
+      .violet-core {
+        fill: #b794ff;
+        animation: labs-violet-core 24s ease-in-out -11s infinite;
+      }
+      .violet-halo {
+        fill: url(#violet-bloom);
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: labs-violet-halo 24s ease-in-out -11s infinite;
+      }
+      .violet-ring {
+        fill: none;
+        stroke: #b794ff;
+        stroke-width: 0.9;
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: labs-violet-ring 24s ease-in-out -11s infinite;
+      }
+      @keyframes labs-pulse {
+        0%, 100% { opacity: 0.42; }
+        50% { opacity: 1; }
+      }
+      @keyframes labs-violet-core {
+        0%, 100% { opacity: 0.08; }
+        45%, 55% { opacity: 1; }
+      }
+      @keyframes labs-violet-halo {
+        0%, 100% { opacity: 0.08; transform: scale(0.76); }
+        45%, 55% { opacity: 0.95; transform: scale(1.12); }
+      }
+      @keyframes labs-violet-ring {
+        0%, 100% { opacity: 0.06; transform: scale(0.84); }
+        45%, 55% { opacity: 0.62; transform: scale(1.16); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .pulse-1,
+        .pulse-2,
+        .pulse-3,
+        .pulse-4,
+        .pulse-5,
+        .violet-core,
+        .violet-halo,
+        .violet-ring {
+          animation: none;
+        }
+        .violet-core { opacity: 0.72; }
+        .violet-halo { opacity: 0.52; transform: none; }
+        .violet-ring { opacity: 0.36; transform: none; }
+      }
+    </style>
+  </defs>
+
+  <!-- Subtle interior washes inside the outer constellation groups -->
+  <polygon class="cluster-fill" points="74,152 138,96 254,114 222,206 116,224"/>
+  <polygon class="cluster-fill" points="348,86 418,48 472,92 398,122 364,174"/>
+  <polygon class="cluster-fill" points="92,344 184,312 292,342 242,376 206,464 108,442"/>
+  <polygon class="cluster-fill" points="1334,114 1396,88 1518,96 1548,146 1422,150"/>
+  <polygon class="cluster-fill" points="1614,194 1686,118 1764,102 1842,166 1794,248 1658,268"/>
+  <polygon class="cluster-fill" points="1606,374 1692,330 1788,344 1834,418 1758,476 1644,456"/>
+
+  <!-- Faint dashed bridges linking groups into one sky -->
+  <path class="bridge" d="M 254 114 L 348 86 M 222 206 L 184 312 M 242 376 L 342 462"/>
+  <path class="bridge" d="M 418 48 L 646 56 M 794 46 L 1062 54 M 1192 82 L 1334 114"/>
+  <path class="bridge" d="M 1518 96 L 1686 118 M 1548 146 L 1614 194 M 1658 268 L 1692 330 M 1644 456 L 1544 494"/>
+
+  <!-- G1: Far-left upper constellation -->
+  <path class="edge-ivory" d="M 74 152 L 138 96 L 254 114 L 222 206 L 116 224 Z"/>
+  <path class="edge-violet" d="M 138 96 L 178 146 L 254 114 M 178 146 L 222 206"/>
+  <path class="edge-chord" d="M 74 152 L 178 146 L 116 224"/>
+
+  <!-- G2: Inner-left upper constellation (above-left of the seal; visible at 1300px and 1920px) -->
+  <path class="edge-ivory" d="M 348 86 L 418 48 L 472 92 M 348 86 L 364 174"/>
+  <path class="edge-violet" d="M 348 86 L 398 122 L 472 92 M 398 122 L 364 174"/>
+  <path class="edge-chord" d="M 418 48 L 398 122"/>
+
+  <!-- G3: Far-left lower constellation -->
+  <path class="edge-ivory" d="M 92 344 L 184 312 L 292 342 M 92 344 L 108 442 L 206 464"/>
+  <path class="edge-violet" d="M 184 312 L 242 376 L 292 342 M 242 376 L 206 464"/>
+  <path class="edge-chord" d="M 92 344 L 242 376 L 108 442"/>
+
+  <!-- G4: Inner-left lower constellation (below-left of the seal; visible at 1300px and 1920px) -->
+  <path class="edge-ivory" d="M 342 462 L 394 438 L 446 482 L 376 506 Z"/>
+  <path class="edge-chord" d="M 394 438 L 376 506"/>
+
+  <!-- Upper sky sparse asterisms (cleanly above the orbit arc and wordmark, clear of nav) -->
+  <path class="edge-sky" d="M 646 56 L 724 84 L 794 46 M 724 84 L 696 34"/>
+  <path class="edge-sky" d="M 1062 54 L 1134 38 L 1192 82 L 1126 86 Z"/>
+
+  <!-- G5: Inner-right upper constellation (below hero-nav, above wordmark; visible at 1300px and 1920px) -->
+  <path class="edge-ivory" d="M 1334 114 L 1396 88 L 1518 96 L 1548 146 L 1422 150 Z"/>
+  <path class="edge-violet" d="M 1396 88 L 1446 118 L 1518 96 M 1446 118 L 1548 146"/>
+  <path class="edge-chord" d="M 1334 114 L 1446 118 L 1422 150"/>
+
+  <!-- G6: Far-right upper constellation -->
+  <path class="edge-ivory" d="M 1614 194 L 1686 118 L 1764 102 L 1842 166 L 1794 248 L 1658 268 Z"/>
+  <path class="edge-violet" d="M 1686 118 L 1712 206 L 1764 102 M 1712 206 L 1794 248"/>
+  <path class="edge-chord" d="M 1614 194 L 1712 206 L 1658 268 M 1712 206 L 1842 166"/>
+
+  <!-- G7: Far-right lower constellation -->
+  <path class="edge-ivory" d="M 1606 374 L 1692 330 L 1788 344 L 1834 418 L 1758 476 L 1644 456 Z"/>
+  <path class="edge-violet" d="M 1692 330 L 1736 386 L 1788 344 M 1736 386 L 1758 476"/>
+  <path class="edge-chord" d="M 1606 374 L 1736 386 L 1644 456 M 1736 386 L 1834 418"/>
+
+  <!-- G8: Inner-right lower constellation (below tagline; visible at 1300px and 1920px) -->
+  <path class="edge-ivory" d="M 1414 492 L 1476 472 L 1544 494 L 1488 514 Z"/>
+  <path class="edge-chord" d="M 1476 472 L 1488 514"/>
+
+  <!-- Soft halos behind violet accent stars -->
+  <circle cx="178" cy="146" r="10" fill="url(#violet-soft)" class="pulse-1"/>
+  <circle cx="242" cy="376" r="11" fill="url(#violet-soft)" class="pulse-2"/>
+  <circle cx="794" cy="46" r="9" fill="url(#violet-soft)" class="pulse-3"/>
+  <circle cx="1446" cy="118" r="10" fill="url(#violet-soft)" class="pulse-4"/>
+  <circle cx="1736" cy="386" r="11" fill="url(#violet-soft)" class="pulse-5"/>
+  <circle cx="1712" cy="206" r="9" fill="url(#violet-soft)"/>
+  <circle cx="472" cy="92" r="7.5" fill="url(#violet-soft)"/>
+  <circle cx="1134" cy="38" r="7" fill="url(#violet-soft)"/>
+  <circle cx="1476" cy="472" r="7" fill="url(#violet-soft)"/>
+
+  <!-- Subtle halos on key ivory stars -->
+  <circle cx="138" cy="96" r="5.5" fill="url(#ivory-halo)"/>
+  <circle cx="254" cy="114" r="5" fill="url(#ivory-halo)"/>
+  <circle cx="418" cy="48" r="5" fill="url(#ivory-halo)"/>
+  <circle cx="1686" cy="118" r="5.5" fill="url(#ivory-halo)"/>
+  <circle cx="1794" cy="248" r="5" fill="url(#ivory-halo)"/>
+
+  <!-- G1 dots -->
+  <circle class="star-ivory" cx="74" cy="152" r="1.8"/>
+  <circle class="star-ivory" cx="138" cy="96" r="2.1"/>
+  <circle class="star-violet pulse-1" cx="178" cy="146" r="2.3"/>
+  <circle class="star-ivory" cx="254" cy="114" r="1.9"/>
+  <circle class="star-violet" cx="222" cy="206" r="1.9"/>
+  <circle class="star-ivory-dim" cx="116" cy="224" r="1.7"/>
+
+  <!-- G2 dots (includes the single star that slowly brightens to violet and back) -->
+  <circle class="star-ivory" cx="348" cy="86" r="1.8"/>
+  <circle class="star-ivory" cx="418" cy="48" r="2"/>
+  <circle class="star-violet" cx="472" cy="92" r="1.9"/>
+  <circle class="star-ivory-dim" cx="364" cy="174" r="1.7"/>
+  <!-- Single violet-brightening dot at (398, 122) -->
+  <circle class="violet-halo" cx="398" cy="122" r="17"/>
+  <circle class="violet-ring" cx="398" cy="122" r="8"/>
+  <circle class="star-ivory" cx="398" cy="122" r="2.2"/>
+  <circle class="violet-core" cx="398" cy="122" r="2.6"/>
+
+  <!-- G3 dots -->
+  <circle class="star-ivory" cx="92" cy="344" r="1.9"/>
+  <circle class="star-ivory" cx="184" cy="312" r="1.8"/>
+  <circle class="star-violet pulse-2" cx="242" cy="376" r="2.4"/>
+  <circle class="star-ivory-dim" cx="292" cy="342" r="1.6"/>
+  <circle class="star-ivory" cx="206" cy="464" r="1.8"/>
+  <circle class="star-violet" cx="108" cy="442" r="1.7"/>
+
+  <!-- G4 dots -->
+  <circle class="star-ivory-dim" cx="342" cy="462" r="1.7"/>
+  <circle class="star-violet" cx="394" cy="438" r="1.9"/>
+  <circle class="star-ivory" cx="446" cy="482" r="1.8"/>
+  <circle class="star-ivory-dim" cx="376" cy="506" r="1.5"/>
+
+  <!-- Upper sky asterism dots -->
+  <circle class="star-ivory-dim" cx="646" cy="56" r="1.6"/>
+  <circle class="star-ivory" cx="724" cy="84" r="1.7"/>
+  <circle class="star-violet pulse-3" cx="794" cy="46" r="2.1"/>
+  <circle class="star-ivory-dim" cx="696" cy="34" r="1.4"/>
+  <circle class="star-ivory-dim" cx="1062" cy="54" r="1.6"/>
+  <circle class="star-violet" cx="1134" cy="38" r="1.9"/>
+  <circle class="star-ivory" cx="1192" cy="82" r="1.7"/>
+  <circle class="star-ivory-dim" cx="1126" cy="86" r="1.5"/>
+
+  <!-- G5 dots -->
+  <circle class="star-ivory-dim" cx="1334" cy="114" r="1.6"/>
+  <circle class="star-ivory" cx="1396" cy="88" r="1.9"/>
+  <circle class="star-violet pulse-4" cx="1446" cy="118" r="2.2"/>
+  <circle class="star-ivory" cx="1518" cy="96" r="1.9"/>
+  <circle class="star-ivory" cx="1548" cy="146" r="1.8"/>
+  <circle class="star-ivory-dim" cx="1422" cy="150" r="1.5"/>
+
+  <!-- G6 dots -->
+  <circle class="star-ivory" cx="1614" cy="194" r="1.8"/>
+  <circle class="star-ivory" cx="1686" cy="118" r="2.1"/>
+  <circle class="star-violet" cx="1764" cy="102" r="2.1"/>
+  <circle class="star-ivory" cx="1842" cy="166" r="1.8"/>
+  <circle class="star-ivory" cx="1794" cy="248" r="1.9"/>
+  <circle class="star-violet" cx="1712" cy="206" r="2.2"/>
+  <circle class="star-ivory-dim" cx="1658" cy="268" r="1.6"/>
+
+  <!-- G7 dots -->
+  <circle class="star-ivory-dim" cx="1606" cy="374" r="1.7"/>
+  <circle class="star-ivory" cx="1692" cy="330" r="1.9"/>
+  <circle class="star-ivory" cx="1788" cy="344" r="1.8"/>
+  <circle class="star-ivory-dim" cx="1834" cy="418" r="1.6"/>
+  <circle class="star-violet pulse-5" cx="1736" cy="386" r="2.4"/>
+  <circle class="star-ivory" cx="1758" cy="476" r="1.8"/>
+  <circle class="star-violet" cx="1644" cy="456" r="1.8"/>
+
+  <!-- G8 dots -->
+  <circle class="star-ivory-dim" cx="1414" cy="492" r="1.6"/>
+  <circle class="star-violet" cx="1476" cy="472" r="1.9"/>
+  <circle class="star-ivory" cx="1544" cy="494" r="1.7"/>
+  <circle class="star-ivory-dim" cx="1488" cy="514" r="1.5"/>
+
+  <!-- Sparse field stars above, below, and between the groups -->
+  <circle class="star-field" cx="298" cy="46" r="1.2"/>
+  <circle class="star-field-violet" cx="288" cy="252" r="1.3"/>
+  <circle class="star-field" cx="564" cy="42" r="1.3"/>
+  <circle class="star-field-violet" cx="614" cy="112" r="1.2"/>
+  <circle class="star-field" cx="846" cy="62" r="1.2"/>
+  <circle class="star-field" cx="908" cy="34" r="1.2"/>
+  <circle class="star-field-violet" cx="988" cy="44" r="1.3"/>
+  <circle class="star-field" cx="1238" cy="116" r="1.2"/>
+  <circle class="star-field" cx="1584" cy="54" r="1.2"/>
+  <circle class="star-field-violet" cx="1624" cy="304" r="1.3"/>
+  <circle class="star-field" cx="1862" cy="296" r="1.2"/>
+  <circle class="star-field" cx="708" cy="488" r="1.3"/>
+  <circle class="star-field-violet" cx="834" cy="502" r="1.4"/>
+  <circle class="star-field" cx="962" cy="486" r="1.3"/>
+  <circle class="star-field" cx="1028" cy="504" r="1.2"/>
+  <circle class="star-field-violet" cx="1158" cy="492" r="1.3"/>
+  <circle class="star-field" cx="1294" cy="482" r="1.3"/>
+</svg>

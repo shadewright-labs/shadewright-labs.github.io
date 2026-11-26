@@ -175,10 +175,61 @@ figure {
   scroll-margin-top: 4.5rem;
 }
 
-/* Hero: the house lockup on the dark field with its glow and arc (the only gradient on the site) */
+/* Hero: house lockup on the dark field with glow, arc and full-width constellation sky.
+   Constellation dots and lines sit in the open sky around the lockup and stay clear of all
+   letters and links. Contrast against the brightest pixel behind the hero text:
+   - hero-nav links --link (#caa5ff) on --obsidian (#0b0810): 9.79:1 (on glow tail #100b19: 9.54:1)
+   - hero-nav hover --ivory (#efe8d8) on --obsidian (#0b0810): 16.29:1
+   - tagline and lockup --ivory (#efe8d8) on glow peak #211136: 14.36:1 (on #0b0810: 16.29:1)
+   All text pairs exceed 7:1 against the brightest pixel behind them. */
 .hero {
-  padding: 28px 0 42px;
-  background: radial-gradient(ellipse at 51% 68%, #211136 0%, #100b19 43%, var(--obsidian) 76%);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 28px 0 56px;
+  background:
+    radial-gradient(ellipse at 51% 68%, #211136 0%, #100b19 43%, var(--obsidian) 76%),
+    var(--obsidian);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background: url("hero-constellation.svg") center top / 1920px 560px no-repeat;
+}
+
+/* Feather the top, bottom and outer edges of the constellation band into --obsidian. */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--obsidian) 38%, transparent) 0%,
+      transparent 10%,
+      transparent 82%,
+      color-mix(in srgb, var(--obsidian) 74%, transparent) 93%,
+      var(--obsidian) 100%
+    ),
+    linear-gradient(
+      to right,
+      var(--obsidian) 0%,
+      color-mix(in srgb, var(--obsidian) 42%, transparent) 3%,
+      transparent 7.5%,
+      transparent 92.5%,
+      color-mix(in srgb, var(--obsidian) 42%, transparent) 97%,
+      var(--obsidian) 100%
+    );
+}
+
+.hero--small::before {
+  opacity: 0.72;
 }
 
 .hero .wrap {
@@ -572,7 +623,40 @@ figure {
   padding-left: 1.2rem;
 }
 
+@media (max-width: 1440px) {
+  .hero::after {
+    background:
+      linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--obsidian) 36%, transparent) 0%,
+        transparent 10%,
+        transparent 82%,
+        color-mix(in srgb, var(--obsidian) 74%, transparent) 93%,
+        var(--obsidian) 100%
+      ),
+      linear-gradient(
+        to right,
+        var(--obsidian) 0%,
+        color-mix(in srgb, var(--obsidian) 38%, transparent) 1.5%,
+        transparent 4%,
+        transparent 96%,
+        color-mix(in srgb, var(--obsidian) 38%, transparent) 98.5%,
+        var(--obsidian) 100%
+      );
+  }
+}
+
+@media (max-width: 1268px) {
+  .hero::before {
+    background-size: 151.4% auto;
+  }
+}
+
 @media (max-width: 900px) {
+  .hero::before {
+    opacity: 0.65;
+  }
+
   .product {
     padding: 0 10px;
   }
@@ -619,6 +703,19 @@ figure {
 
   .hero {
     padding: 20px 0 22px;
+  }
+
+  .hero::before {
+    display: none;
+  }
+
+  .hero::after {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 78%,
+      var(--obsidian) 100%
+    );
   }
 
   .hero-nav {
