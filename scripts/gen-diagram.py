@@ -10,6 +10,70 @@ SW = {"stroke": "#A879FF", "text": "#A879FF"}
 SC = {"stroke": "#2DD4BF", "text": "#2DD4BF"}
 NL = {"stroke": "#8B3DFF", "text": "#B794FF"}
 
+# Product glyphs: (viewBox tuple (x, y, w, h), list of (fill, fill_rule, d)).
+# The paths are taken verbatim from each product's 64x64 glyph SVG.
+GLYPHS = {
+    "shadewright": (
+        (0, 0, 64, 64),
+        [
+            ("#08060E", None,
+             "M32 4C36.5 6.7 40.8 10.3 44 14.5L46 18.6 58 11.5C54.8 17.2 49.6 21.2 48 25.5L51.8 30.3"
+             "Q53.3 32.4 50.8 34.2L48.2 36.2 56.5 39.1C51.4 41.6 51.6 46.8 47.2 50.6C42.7 54.7 37.1 55.8 32 60"
+             "C26.9 55.8 21.3 54.7 16.8 50.6C12.4 46.8 12.6 41.6 7.5 39.1L15.8 36.2 13.2 34.2"
+             "Q10.7 32.4 12.2 30.3L16 25.5C14.4 21.2 9.2 17.2 6 11.5L18 18.6 20 14.5C23.2 10.3 27.5 6.7 32 4Z"),
+            ("#A879FF", "evenodd",
+             "M32 4C36.5 6.7 40.8 10.3 44 14.5L46 18.6 58 11.5C54.8 17.2 49.6 21.2 48 25.5L51.8 30.3"
+             "Q53.3 32.4 50.8 34.2L48.2 36.2 56.5 39.1C51.4 41.6 51.6 46.8 47.2 50.6C42.7 54.7 37.1 55.8 32 60"
+             "C26.9 55.8 21.3 54.7 16.8 50.6C12.4 46.8 12.6 41.6 7.5 39.1L15.8 36.2 13.2 34.2"
+             "Q10.7 32.4 12.2 30.3L16 25.5C14.4 21.2 9.2 17.2 6 11.5L18 18.6 20 14.5C23.2 10.3 27.5 6.7 32 4Z "
+             "M32 7.2C28.2 9.5 25 12.3 22 15.8L18.4 24.9C22.6 19.7 27.2 15.2 32 12.8"
+             "C36.8 15.2 41.4 19.7 45.6 24.9L42 15.8C39 12.3 35.8 9.5 32 7.2Z "
+             "M9.3 14.9 17.5 20.8 16.9 24Z M54.7 14.9 46.5 20.8 47.1 24Z "
+             "M32 17.4C26.4 19.8 20.6 26 14.7 31.5Q13.7 32.4 15.4 33.6C19.1 36.4 24.2 38.7 25.5 43.4"
+             "C23.5 41.4 20.8 39.5 18.4 37.9L12.5 40C15.2 42.4 15.4 45.6 19.2 48.7C23 52 27.4 53.5 32 57"
+             "C36.6 53.5 41 52 44.8 48.7C48.6 45.6 48.8 42.4 51.5 40L45.6 37.9C43.2 39.5 40.5 41.4 38.5 43.4"
+             "C39.8 38.7 44.9 36.4 48.6 33.6Q50.3 32.4 49.3 31.5C43.4 26 37.6 19.8 32 17.4Z"),
+            ("#A879FF", None,
+             "M23.5 28C22.2 37 31.4 39.5 38.4 44.1C43.8 47.7 44 52.1 39.8 55.3"
+             "C40.5 51.5 37.9 48.9 32.3 45.8C23.1 40.6 19.5 34.1 23.5 28Z "
+             "M28.8 45C34.8 48.9 36.4 54 32 58L29.2 55.3C33 52.1 31.6 48.7 28.8 45Z"),
+            ("#EFE9DC", None,
+             "M23 24.9Q28.1 25.1 30.3 29.4Q25.1 29 23 24.9Z M41 24.9Q35.9 25.1 33.7 29.4Q38.9 29 41 24.9Z"),
+        ],
+    ),
+    "sablecourt": (
+        (0, 0, 64, 64),
+        [
+            ("#08060E", None,
+             "M32 4 36.8 12.7 44 8.3 44.5 17.3 47 20.9 58 15.1 50 28.1 52.4 34.8 48 38 55 41.4 48 50.7 "
+             "32 60 16 50.7 9 41.4 16 38 11.6 34.8 14 28.1 6 15.1 17 20.9 19.5 17.3 20 8.3 27.2 12.7Z"),
+            ("#EFE9DC", "evenodd",
+             "M32 4 36.8 12.7 44 8.3 44.5 17.3 47 20.9 58 15.1 50 28.1 52.4 34.8 48 38 55 41.4 48 50.7 "
+             "32 60 16 50.7 9 41.4 16 38 11.6 34.8 14 28.1 6 15.1 17 20.9 19.5 17.3 20 8.3 27.2 12.7Z "
+             "M32 10.2 29 16.3 23 13.6 23.2 18 32 15.6 40.8 18 41 13.6 35 16.3Z "
+             "M9.9 17.7 17.5 23.1 15.8 26Z M54.1 17.7 46.5 23.1 48.2 26Z "
+             "M32 19.4 22.2 22.3 18.3 27.5 15.5 33.7 23.1 39.4 32 44.9 40.9 39.4 48.5 33.7 45.7 27.5 41.8 22.3Z "
+             "M17.9 40.2 13.6 42.3 17.8 48.4 28.7 54.8 24.2 47.2Z "
+             "M46.1 40.2 50.4 42.3 46.2 48.4 35.3 54.8 39.8 47.2Z "
+             "M27.3 45.6 32 54.6 36.7 45.6 32 48.1Z"),
+            ("#2DD4BF", None,
+             "M21.3 26.4 29.2 28.6 29.6 31.5 24.2 30.1Z M42.7 26.4 34.8 28.6 34.4 31.5 39.8 30.1Z "
+             "M32 13.2 35.2 17.2 32 20.5 28.8 17.2Z"),
+        ],
+    ),
+    "nightloom": (
+        (0, 0, 64, 64),
+        [
+            ('#08060E', None,
+             'M32 9C24 9 17 8 10 4Q8 11.5 11 18.5C8 25 6 30 6 35C6 44 12 51 19 54Q26.5 57 32 60Q37.5 57 45 54C52 51 58 44 58 35C58 30 56 25 53 18.5Q56 11.5 54 4C47 8 40 9 32 9Z'),
+            ('#8B3DFF', 'evenodd',
+             'M32 9C24 9 17 8 10 4Q8 11.5 11 18.5C8 25 6 30 6 35C6 44 12 51 19 54Q26.5 57 32 60Q37.5 57 45 54C52 51 58 44 58 35C58 30 56 25 53 18.5Q56 11.5 54 4C47 8 40 9 32 9Z M32 31.08Q28 26.35 22 26.35C17 26.35 12.7 27.4 10.45 28.95Q9.39 31.68 9.075 34.9C8.82 42 13.77 48.33 20.19 51.17Q26.5 53.75 32 56.58Q37.5 53.75 43.81 51.17C50.23 48.33 55.18 42 54.925 34.9Q54.61 31.68 53.55 28.95C51.3 27.4 47 26.35 42 26.35Q36 26.35 32 31.08Z M32 12.035Q26.9 12.055 23 11.465C23.7 16.25 26.65 20.65 28.05 23.28Q29.65 25.65 32 26.5Q34.35 25.65 35.95 23.28C37.35 20.65 40.3 16.25 41 11.465Q37.1 12.055 32 12.035Z M12.27 8.59Q15.23 9.76 19.65 10.97C19.99 16 22.49 20.6 24.62 23.31Q17.9 22.64 11.67 24.88C12.31 23.33 13.72 21.05 13.995 19.33Q14.27 18.3 13.94 17.64Q12.2 13.4 12.27 8.59Z M51.73 8.59Q48.77 9.76 44.35 10.97C44.01 16 41.51 20.6 39.38 23.31Q46.1 22.64 52.33 24.88C51.69 23.33 50.28 21.05 50.005 19.33Q49.73 18.3 50.06 17.64Q51.8 13.4 51.73 8.59Z M32 39.79Q29.28 41 28.84 43.5Q29.77 46.5 32 48.81Q34.23 46.5 35.16 43.5Q34.72 41 32 39.79Z'),
+            ('#B794FF', None,
+             'M16.9 33Q21 33 26.1 37.5L25.2 40.9Q19.6 40.9 16.9 37Z M47.1 33Q43 33 37.9 37.5L38.8 40.9Q44.4 40.9 47.1 37Z'),
+        ],
+    ),
+}
+
 OPS = [
     ("SHADEWRIGHT", SW, "Pull request review", [("d", "On the Git host, under branch rules"), ("p", "A person reviews and merges")]),
     ("SABLECOURT", SC, "sablectl and the web UI", [("d", "Workloads, Conclaves, approvals"), ("p", "A person approves gated actions")]),
@@ -104,16 +168,51 @@ def line(out, kind, x, base, text, accent, size, tagsize):
         out.append(f'  <text class="{kind}" x="{x}" y="{base}">{escape(text)}</text>')
 
 
-def card(out, x, y, w, h, stroke, title, lines, accent, pad, steps, size, tagsize, label=None):
+def glyph(out, key, x, y, height):
+    """Draw a product glyph scaled to height while preserving aspect ratio; returns rendered width."""
+    (vx, vy, vw, vh), paths = GLYPHS[key]
+    scale = height / vh
+    width = height * vw / vh
+    tf = f"translate({x:g} {y:g}) scale({scale:.4f})"
+    if vx or vy:
+        tf += f" translate({-vx:g} {-vy:g})"
+    out.append(f'  <g aria-hidden="true" transform="{tf}">')
+    for fill, rule, d in paths:
+        extra = f' fill-rule="{rule}"' if rule else ""
+        out.append(f'    <path fill="{fill}"{extra} d="{d}"/>')
+    out.append('  </g>')
+    return width
+
+
+def card(out, x, y, w, h, stroke, title, lines, accent, pad, steps, size, tagsize, label=None, glyph_key=None, title_size=16):
     out.append(f'  <rect class="node" x="{x}" y="{y}" width="{w}" height="{h}" rx="10" stroke="{stroke}"/>')
     b = y + steps[0]
     i = 0
+    tx = x + pad
+    head_tx = tx
+    if glyph_key:
+        cap_t = round(title_size * 0.72)
+        gap = 10
+        if label:
+            # Align glyph with the two-line header (label + title) on the baseline grid; body lines stay full width.
+            cap_l = round(tagsize * 0.72)
+            gh = round(cap_t * 2.5)
+            gy = round((y + steps[0] - cap_l + y + steps[1] - gh) / 2)
+            gw = glyph(out, glyph_key, x + pad, gy, gh)
+            head_tx = x + pad + round(gw) + gap
+        else:
+            # Align glyph with the title and first body line; shift all lines right for a clean text column.
+            gh = round(cap_t * 2.5)
+            gy = round((y + steps[0] - cap_t + y + steps[1] - gh) / 2)
+            gw = glyph(out, glyph_key, x + pad, gy, gh)
+            tx = x + pad + round(gw) + gap
+            head_tx = tx
     if label:
-        out.append(f'  <text class="caps" x="{x + pad}" y="{b}" style="fill:{label[1]}">{label[0]}</text>')
+        out.append(f'  <text class="caps" x="{head_tx}" y="{b}" style="fill:{label[1]}">{label[0]}</text>')
         i += 1
-    out.append(f'  <text class="t" x="{x + pad}" y="{y + steps[i]}">{escape(title)}</text>')
+    out.append(f'  <text class="t" x="{head_tx}" y="{y + steps[i]}">{escape(title)}</text>')
     for k, (kind, text) in enumerate(lines):
-        line(out, kind, x + pad, y + steps[i + 1 + k], text, accent, size, tagsize)
+        line(out, kind, tx, y + steps[i + 1 + k], text, accent, size, tagsize)
 
 
 def legend(out, items_y, x0, size, tagsize, vertical=False, step=0):
@@ -169,17 +268,24 @@ def wide():
     out.append(f'  <text class="caps d" x="190" y="43">ONE PERSON, THREE SURFACES</text>')
     for (lab, col, title, lines), c in zip(OPS, centers):
         x = c - cw / 2
-        card(out, x, 62, cw, 92, BONE, title, lines, col["text"], 16, [31, 56, 78], S, SUB)
+        card(out, x, 62, cw, 92, BONE, title, lines, col["text"], 16, [31, 56, 78], S, SUB, glyph_key=lab.lower(), title_size=T)
         out.append(f'  <path class="ln" d="M{c} 154V222" stroke="{BONE}"/>')
     # Product panels
     PY, PH = 222, 650
     rows = [314, 454, 594, 734]
     CH = 116
+    cap_head = round(HEAD * 0.72)
+    panel_gh = round(cap_head * 2.35)
+    panel_gap = 10
     for (name, sub, col, cards, note), x in zip(PANELS, px):
         framed(out, f"c-{name.lower()}", x, PY, pw, PH, col["stroke"], 7)
-        out.append(f'  <text class="serif" x="{x + 22}" y="{PY + 46}">{name}</text>')
-        out.append(f'  <text class="caps" x="{x + 22}" y="{PY + 72}" style="fill:{col["text"]}">{sub}</text>')
         cx = x + 18
+        name_y, sub_y = PY + 46, PY + 72
+        gy = round((name_y - cap_head + sub_y - panel_gh) / 2)
+        gw = glyph(out, name.lower(), cx, gy, panel_gh)
+        tx = cx + round(gw) + panel_gap
+        out.append(f'  <text class="serif" x="{tx}" y="{name_y}">{name}</text>')
+        out.append(f'  <text class="caps" x="{tx}" y="{sub_y}" style="fill:{col["text"]}">{sub}</text>')
         for i, (title, lines) in enumerate(cards):
             y = rows[i]
             if i:
@@ -230,16 +336,23 @@ def narrow():
     body.append(f'  <text class="caps d" x="16" y="62">ONE PERSON, THREE SURFACES</text>')
     for i, (lab, col, title, lines) in enumerate(OPS):
         y = 76 + i * 116
-        card(body, cx, y, cw, 104, BONE, title, lines, col["text"], pad, [25, 49, 71, 93], S, SUB, label=(lab, col["text"]))
+        card(body, cx, y, cw, 104, BONE, title, lines, col["text"], pad, [25, 49, 71, 93], S, SUB, label=(lab, col["text"]), glyph_key=lab.lower(), title_size=T)
     y = 456
     CH, GAP = 114, 24
     gaps = {0: LINKS[0], 1: LINKS[1]}
+    cap_head = round(HEAD * 0.72)
+    panel_gh = round(cap_head * 2.35)
+    panel_gap = 10
     for k, (name, sub, col, cards, note) in enumerate(PANELS):
         n = len(cards)
         h = 84 + n * CH + (n - 1) * GAP + (88 if note else 18)
         framed(body, f"c-{name.lower()}", 1, y, 358, h, col["stroke"], 7)
-        body.append(f'  <text class="serif" x="16" y="{y + 40}">{name}</text>')
-        body.append(f'  <text class="caps" x="16" y="{y + 64}" style="fill:{col["text"]}">{sub}</text>')
+        name_y, sub_y = y + 40, y + 64
+        gy = round((name_y - cap_head + sub_y - panel_gh) / 2)
+        gw = glyph(body, name.lower(), cx, gy, panel_gh)
+        tx = cx + round(gw) + panel_gap
+        body.append(f'  <text class="serif" x="{tx}" y="{name_y}">{name}</text>')
+        body.append(f'  <text class="caps" x="{tx}" y="{sub_y}" style="fill:{col["text"]}">{sub}</text>')
         for i, (title, lines) in enumerate(cards):
             cy = y + 84 + i * (CH + GAP)
             if i:

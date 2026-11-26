@@ -87,6 +87,94 @@ figure {
   top: 1rem;
 }
 
+/* Site-wide top bar: solid --obsidian (#0b0810) background from the existing palette.
+   WCAG 2.1 contrast ratios against #0b0810:
+   - link text --link (#caa5ff): 9.79:1 (passes AA 4.5:1 and AAA 7:1)
+   - brand text and link hover --ivory (#efe8d8): 16.29:1 (passes AA and AAA) */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--obsidian);
+  border-bottom: 1px solid var(--line);
+}
+
+.topbar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding: 10px 0;
+}
+
+.topbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ivory);
+  font: 0.95rem/1.2 var(--serif);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.topbar-brand:hover {
+  color: var(--link);
+}
+
+.topbar-brand img {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  border-radius: 4px;
+}
+
+.topbar-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.topbar-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+  color: var(--link);
+  font-size: 0.86rem;
+  line-height: 1.3;
+  text-decoration: none;
+}
+
+.topbar-links a:hover,
+.topbar-links a:focus-visible {
+  color: var(--ivory);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.topbar a:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.topbar-icon {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+#main,
+.products,
+.section {
+  scroll-margin-top: 4.5rem;
+}
+
 /* Hero: the house lockup on the dark field with its glow and arc (the only gradient on the site) */
 .hero {
   padding: 28px 0 42px;
@@ -498,6 +586,35 @@ figure {
 @media (max-width: 640px) {
   .wrap {
     width: calc(100% - 32px);
+  }
+
+  .topbar-inner {
+    padding: 8px 0;
+    gap: 6px 14px;
+  }
+
+  .topbar-brand {
+    font-size: 0.88rem;
+    gap: 8px;
+  }
+
+  .topbar-brand img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .topbar-links {
+    gap: 4px 12px;
+  }
+
+  .topbar-links a {
+    font-size: 0.8rem;
+  }
+
+  #main,
+  .products,
+  .section {
+    scroll-margin-top: 7.5rem;
   }
 
   .hero {
